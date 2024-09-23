@@ -7,6 +7,10 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  username: {
+    type: String,
+    required: true,
+  },
   email: {
     //TODO: VALIDACIONES!!
     type: String,
@@ -38,6 +42,6 @@ userSchema.methods.calculeAge = function () {
   return differenceInYears(today, new Date(this.birth_date));
 };
 
-const userModel = mongoose.model("User", userSchema, "user");
+const userModel = mongoose.model("Users", userSchema, "users");
 
 module.exports = userModel;

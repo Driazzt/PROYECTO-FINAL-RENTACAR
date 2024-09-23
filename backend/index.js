@@ -37,7 +37,7 @@ const vehiclesRouter = require("./src/Routes/vehiclesRouter");
 //! Rutas:
 
 app.use("/vehicles", vehiclesRouter);
-app.use("/user", userRouter);
+app.use("/users", userRouter);
 app.use("/login", loginRouter);
 
 //! Puerto:

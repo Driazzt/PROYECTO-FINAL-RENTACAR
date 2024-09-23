@@ -2,7 +2,7 @@ const vehiclesModel = require("../Models/vehiclesModel");
 
 //! Endpoints:
 
-//! getAllVehicles:
+//! Obtener todos los vehiculos:
 
 const getAllVehicles = async (req, res) => {
   try {
