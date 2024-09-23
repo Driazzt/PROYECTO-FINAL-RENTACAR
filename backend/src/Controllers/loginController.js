@@ -1,10 +1,13 @@
 const userModel = require("../Models/userModel");
 const bcrypt = require("bcrypt");
 const generateToken = require("../Utils/generateToken");
+const replaceTemplateEmail = require("../Utils/replaceTemplateEmail");
+const sendMail = require("../Services/emailService");
+const { emailSignupTemplate } = require("../Template/template");
 
 //! EndPoints
 
-//! Registro de usuario.
+//! Registro de usuario. //POST
 
 const signup = async (req, res) => {
   try {
@@ -19,15 +22,25 @@ const signup = async (req, res) => {
     });
     await user.save();
 
-    // introducir EMAIL TEMPLATE
+    const userTemplate = {
+      name: user.name,
+      email: user.email,
+      my_company: "Drivezy RentACar",
+      company_address: "Dizzy Street 9",
+    };
 
-    res.status(201).json({ status: "Success", users: users });
+    const subject = `Thank you very much for registering ${userTemplate.name}.`;
+    const html = replaceTemplateEmail(emailSignupTemplate, userTemplate);
+
+    await sendMail(user.email, subject, html);
+
+    res.status(201).json({ status: "Success", user: user });
   } catch (error) {
     res.status(404).json({ status: "Failed", error: error.message });
   }
 };
 
-//! Logeo de usuario
+//! Logeo de usuario //POST
 
 const login = async (req, res) => {
   try {
@@ -65,7 +78,7 @@ const login = async (req, res) => {
   }
 };
 
-//! Generar el token y token de refresco
+//! Generar el token y token de refresco //GET
 
 const getRefreshToken = async (req, res) => {
   try {

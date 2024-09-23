@@ -42,6 +42,6 @@ userSchema.methods.calculeAge = function () {
   return differenceInYears(today, new Date(this.birth_date));
 };
 
-const userModel = mongoose.model("Users", userSchema, "users");
+const userModel = mongoose.model("User", userSchema, "user");
 
 module.exports = userModel;
