@@ -12,6 +12,26 @@ const getAllUsers = async (req, res) => {
   }
 };
 
+//! Añadir un usuario
+
+const addUser = async (req, res) => {
+  try {
+    console.log("palomo");
+    const password = await bcrypt.hash(req.body.password, 10);
+    const newUser = new userModel({
+      name: req.body.name,
+      username: req.body.username,
+      email: req.body.email,
+      password: password,
+      role: req.body.role,
+    });
+    await newUser.save();
+    res.status(200).json({ status: "succeded", newUser: newUser });
+  } catch (error) {
+    res.status(404).json({ status: "Failed", error: error.message });
+  }
+};
+
 //! Update de un usuario
 
 const updateUser = async (req, res) => {
@@ -34,9 +54,9 @@ const updateUser = async (req, res) => {
 
 const deleteUser = async (req, res) => {
   try {
-    const { id } = req.params;
-    const user = await userModel.findByIdAndDelete(id);
-    if (!id) {
+    const { userId } = req.params;
+    const user = await userModel.findByIdAndDelete(userId);
+    if (!userId) {
       return res
         .status(404)
         .json({ status: "Failed", error: "User not found" });
@@ -50,7 +70,7 @@ const deleteUser = async (req, res) => {
 
 //! Obtener mi perfil (por id)
 
-const getMyProfile = async (req, res) => {
+const getUserById = async (req, res) => {
   try {
     const userId = req.payload._id;
     const user = await userModel.findById(userId);
@@ -66,4 +86,4 @@ const getMyProfile = async (req, res) => {
   }
 };
 
-module.exports = { getAllUsers, updateUser, deleteUser, getMyProfile };
+module.exports = { getAllUsers, updateUser, deleteUser, getUserById, addUser };

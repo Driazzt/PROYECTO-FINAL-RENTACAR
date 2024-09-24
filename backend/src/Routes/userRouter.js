@@ -7,7 +7,8 @@ const verifyAdmin = require("../Middlewares/verifyAdmin");
 
 const {
   getAllUsers,
-  getMyProfile,
+  addUser,
+  getUserById,
   updateUser,
   deleteUser,
 } = require("../Controllers/userController");
@@ -15,7 +16,8 @@ const {
 //! Rutas:
 
 router.get("/getAllUsers", verifyToken, verifyAdmin, getAllUsers);
-router.get("/:id", getMyProfile);
+router.post("/", verifyToken, verifyAdmin, addUser);
+router.get("/:id", getUserById);
 router.patch("/:id", verifyToken, verifyAdmin, updateUser);
 router.delete("/:id", verifyToken, verifyAdmin, deleteUser);
 
