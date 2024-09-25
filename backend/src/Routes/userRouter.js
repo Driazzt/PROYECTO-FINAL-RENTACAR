@@ -17,8 +17,8 @@ const {
 
 router.get("/getAllUsers", verifyToken, verifyAdmin, getAllUsers);
 router.post("/", verifyToken, verifyAdmin, addUser);
-router.get("/:id", getUserById);
-router.patch("/:id", verifyToken, verifyAdmin, updateUser);
-router.delete("/:id", verifyToken, verifyAdmin, deleteUser);
+router.get("/:_id", verifyToken, getUserById);
+router.patch("/:idUser", verifyToken, verifyAdmin, updateUser);
+router.delete("/:idUser", verifyToken, verifyAdmin, deleteUser);
 
 module.exports = router;

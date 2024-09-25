@@ -11,6 +11,16 @@ const { emailSignupTemplate } = require("../Template/template");
 
 const signup = async (req, res) => {
   try {
+    const today = new Date();
+    const birthDate = new Date(req.body.birth_date);
+    const age = today.getFullYear() - birthDate.getFullYear();
+    if (age < 18) {
+      return res.status(400).json({
+        status: "Failed",
+        message: "You have to be +18 years old to register",
+      });
+    }
+
     const password = await bcrypt.hash(req.body.password, 12);
     const user = new userModel({
       name: req.body.name,
@@ -59,7 +69,7 @@ const login = async (req, res) => {
     }
 
     const payload = {
-      userId: user._id,
+      _id: user._id,
       name: user.name,
       username: user.username,
       email: user.email,
@@ -88,7 +98,7 @@ const getRefreshToken = async (req, res) => {
         .json({ status: "Faled", message: "Access Denied" });
     }
     const payload = {
-      userId: req.payload.userId,
+      _id: req.payload.userId,
       name: req.payload.name,
       username: req.payload.username,
       email: req.payload.email,

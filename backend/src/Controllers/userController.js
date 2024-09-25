@@ -1,4 +1,5 @@
 const userModel = require("../Models/userModel");
+const bcrypt = require("bcrypt");
 
 //! Obtener todos los usuarios.
 
@@ -16,17 +17,17 @@ const getAllUsers = async (req, res) => {
 
 const addUser = async (req, res) => {
   try {
-    console.log("palomo");
     const password = await bcrypt.hash(req.body.password, 10);
     const newUser = new userModel({
       name: req.body.name,
       username: req.body.username,
       email: req.body.email,
       password: password,
+      birth_date: req.body.birth_date,
       role: req.body.role,
     });
     await newUser.save();
-    res.status(200).json({ status: "succeded", newUser: newUser });
+    res.status(200).json({ status: "Success", newUser: newUser });
   } catch (error) {
     res.status(404).json({ status: "Failed", error: error.message });
   }
@@ -36,12 +37,16 @@ const addUser = async (req, res) => {
 
 const updateUser = async (req, res) => {
   try {
-    const { id } = req.params;
+    const { idUser } = req.params;
     const newParams = req.body;
-    const user = await userModel.findByIdAndUpdate(id, newParams, {
+    if (newParams.password) {
+      newParams.password = await bcrypt.hash(req.body.password, 12);
+    }
+    const user = await userModel.findByIdAndUpdate(idUser, newParams, {
       new: true,
     });
-
+    //const password = await bcrypt.hash(req.body.password, 12);
+    // if newParams --> hasheo contraseña
     if (!user) return res.status(404).json({ status: "Success", user: user });
 
     res.status(200).json({ status: "Success", user: user });
@@ -54,9 +59,9 @@ const updateUser = async (req, res) => {
 
 const deleteUser = async (req, res) => {
   try {
-    const { userId } = req.params;
-    const user = await userModel.findByIdAndDelete(userId);
-    if (!userId) {
+    const { idUser } = req.params;
+    const user = await userModel.findByIdAndDelete(idUser);
+    if (!idUser) {
       return res
         .status(404)
         .json({ status: "Failed", error: "User not found" });
@@ -72,8 +77,13 @@ const deleteUser = async (req, res) => {
 
 const getUserById = async (req, res) => {
   try {
-    const userId = req.payload._id;
-    const user = await userModel.findById(userId);
+    const _id = req.params._id;
+    console.log("userId", _id);
+    console.log(typeof _id);
+    if (!_id) {
+      return res.status(404).json({ status: "Failed", error: "Id not valid" });
+    }
+    const user = await userModel.findById(_id);
     if (!user) {
       return res
         .status(404)
