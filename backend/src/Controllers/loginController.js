@@ -14,10 +14,10 @@ const signup = async (req, res) => {
     const today = new Date();
     const birthDate = new Date(req.body.birth_date);
     const age = today.getFullYear() - birthDate.getFullYear();
-    if (age < 18) {
+    if (age < 18 || age > 100) {
       return res.status(400).json({
         status: "Failed",
-        message: "You have to be +18 years old to register",
+        message: "You must be between 18 and 100 years old to register.",
       });
     }
 
