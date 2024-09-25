@@ -16,9 +16,9 @@ const {
 //! Rutas:
 
 router.get("/", getAllVehicles);
-router.post("/createVehicle", createVehicle);
+router.post("/createVehicle", verifyToken, verifyAdmin, createVehicle);
 router.get("/:idVehicle", getVehiclesById);
-router.patch("/:idVehicle", updateVehiclesById);
-router.delete("/:idVehicle", deleteVehiclesById);
+router.patch("/:idVehicle", verifyToken, verifyAdmin, updateVehiclesById);
+router.delete("/:idVehicle", verifyToken, verifyAdmin, deleteVehiclesById);
 
 module.exports = router;
