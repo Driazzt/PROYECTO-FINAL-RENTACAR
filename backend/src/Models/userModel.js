@@ -12,13 +12,11 @@ const userSchema = new mongoose.Schema({
     required: true,
   },
   email: {
-    //TODO: VALIDACIONES!!
     type: String,
     required: true,
     unique: true,
   },
   password: {
-    //TODO: ENCRIPTACIONES +  VALIDACIONES!!
     type: String,
     required: true,
   },
@@ -30,6 +28,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     enum: ["user", "admin"],
     default: "user",
+    required: false,
   },
 });
 
