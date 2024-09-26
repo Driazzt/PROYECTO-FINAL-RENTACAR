@@ -14,20 +14,18 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 function App() {
 
   return (
-    <div className='container'>
-      <Provider store={store}>
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<LoginPage />} />
-            <Route path="/create" element={<CreateVehiclePage />} />
-            <Route path="/vehicleList" element={<VehicleListPage />} />
-            <Route path="/vehicleItem" element={<VehiclesItemComponent />} />
-            <Route path="/contact" element={<ContactPage />} />
-            <Route path="/vehicleInfo" element={<VehiclesInfoPage />} />
-          </Routes>
-        </BrowserRouter>
-      </Provider >
-    </div>
+    <Provider store={store}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<LoginPage />} />
+          <Route path="/create" element={<CreateVehiclePage />} />
+          <Route path="/vehicleList" element={<VehicleListPage />} />
+          <Route path="/vehicleItem" element={<VehiclesItemComponent />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/vehicleInfo" element={<VehiclesInfoPage />} />
+        </Routes>
+      </BrowserRouter>
+    </Provider >
   )
 }
 

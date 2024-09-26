@@ -78,7 +78,6 @@ const VehiclesListComponent = () => {
                                             <img
                                                 className="img-fluid"
                                                 src={v.image}
-                                                alt={`${v.model}`}
                                                 style={{ maxHeight: "150px", objectFit: "contain" }}
                                                 onClick={() => goVehicleInfo(v._id)}
                                             />
