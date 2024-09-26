@@ -34,7 +34,7 @@ export const doLoginFetch = async (email, password) => {
   const data = await res.json();
 
   if (data.token) {
-    localStorage.setItem("Token", data.token);
+    localStorage.setItem("token", data.token);
     console.log("Token Stored:", data.token);
   } else {
     console.error("Token do not exist");
@@ -51,6 +51,10 @@ export const getUser = async (userId) => {
   const authToken = localStorage.getItem("token");
   console.log("auth-token", authToken);
   console.log("userId", userId);
+  if (!authToken) {
+    console.error("No token found in localStorage");
+    return null;
+  }
 
   const res = await fetch(`http://localhost:8000/user/${userId}`, {
     method: "GET",
@@ -64,19 +68,31 @@ export const getUser = async (userId) => {
   return result.user;
 };
 
+// export const getUser = async (userId) => {
+//   const res = await fetch(`http://localhost:8000/user/${userId}`);
+//   const result = await res.json();
+//   return result.user;
+// };
+
 //! fetch addvehiclestocart
 
-export const addVehiclesToCart = async (userId, vehiclesId) => {
-  const res = await fetch("http://localhost:8000/user/addVehicles", {
-    method: "POST",
-    headers: {
-      "content-type": "Application/json",
-    },
-    body: JSON.stringify({
-      userId,
-      vehiclesId,
-    }),
-  });
-  const result = await res.json();
-  return result;
-};
+// export const addVehiclesToCart = async (userId, vehiclesId) => {
+//   const res = await fetch(
+//     `http://localhost:8000/user/${userId}/addVehiclesToUser`,
+//     {
+//       method: "POST",
+//       headers: {
+//         "content-type": "Application/json",
+//       },
+//       body: JSON.stringify({
+//         userId,
+//         vehiclesId,
+//       }),
+//     }
+//   );
+//   if (!res.ok) {
+//     throw new Error("Error adding vehicle to cart");
+//   }
+//   const result = await res.json();
+//   return result;
+// };

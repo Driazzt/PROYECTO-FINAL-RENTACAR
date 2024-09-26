@@ -98,10 +98,9 @@ const getUserById = async (req, res) => {
 
 const addVehiclesController = async (req, res) => {
   try {
-    const _id = req.body._id;
-    const vehiclesId = req.body.vehiclesId;
+    const { userId, vehiclesId } = req.body;
 
-    const resUserInfo = await (_id, vehiclesId);
+    const resUserInfo = await (userId, vehiclesId);
 
     res.status(200).json({ status: "Success", user: resUserInfo });
   } catch (error) {
@@ -109,27 +108,28 @@ const addVehiclesController = async (req, res) => {
   }
 };
 
-const addVehiclesToUserInfo = async (req, res) => {
-  const userAux = user.find((u) => u._id == userId);
-  if (userAux.cart) {
-    userAux.cart.push({
-      vehiclesId,
-    });
-  } else {
-    userAux.cart = [
-      {
-        vehiclesId,
-      },
-    ];
-  }
+// const addVehiclesToUserInfo = async (userId, vehiclesId) => {
+//   try {
+//     const userAux = await userModel.findById(userId);
 
-  const userListAux = user.filter((u) => u._id != userId);
-  userListAux.push({
-    ...userAux,
-  });
-  user = userListAux;
-  return userAux;
-};
+//     if (userAux.cart) {
+//       userAux.cart.push({
+//         vehiclesId,
+//       });
+//     } else {
+//       userAux.cart = [
+//         {
+//           vehiclesId,
+//         },
+//       ];
+//     }
+
+//     await userAux.save();
+//     return userAux;
+//   } catch (error) {
+//     console.error("Error when you try to save the item to the cart", error);
+//   }
+// };
 
 module.exports = {
   getAllUsers,
@@ -138,5 +138,5 @@ module.exports = {
   getUserById,
   addUser,
   addVehiclesController,
-  addVehiclesToUserInfo,
+  // addVehiclesToUserInfo,
 };

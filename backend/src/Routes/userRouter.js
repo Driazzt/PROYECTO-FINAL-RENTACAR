@@ -12,14 +12,14 @@ const {
   updateUser,
   deleteUser,
   addVehiclesController,
-  addVehiclesToUserInfo,
+  // addVehiclesToUserInfo,
 } = require("../Controllers/userController");
 
 //! Rutas:
 
 router.get("/getAllUsers", verifyToken, verifyAdmin, getAllUsers);
 router.post("/", verifyToken, verifyAdmin, addUser);
-router.post("/addVehiclesToUser", addVehiclesToUserInfo);
+// router.post("/:userId/addVehiclesToUser", addVehiclesToUserInfo);
 router.post("/addVehicles", addVehiclesController);
 
 router.get("/:_id", verifyToken, getUserById);

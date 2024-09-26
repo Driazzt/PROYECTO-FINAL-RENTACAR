@@ -9,31 +9,30 @@ const MenuComponent = () => {
         isOnline
     } = useSelector((state) => state.userReducer)
 
-    const dispatch = useDispatch()
-    useEffect(() => { }, [user])
+    // const dispatch = useDispatch()
+    // useEffect(() => { }, [user])
 
-    const handlerMenuOption = (option) => {
-        dispatch(changeMenuOption({
-            menuOption: option
-        }))
-    }
+    // const handlerMenuOption = (option) => {
+    //     dispatch(changeMenuOption({
+    //         menuOption: option
+    //     }))
+    // }
 
     return (
-        <div style={{ flex: 1, display: 'flex', flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center' }}>
-            <div>
-                <span style={{ fontWeight: 'bold', fontSize: 24 }}>{user.username}</span>
-                <button>My Profile</button>
+        <div className="d-flex justify-content-around align-items-center flex-wrap p-3">
+            <div className="d-flex justify-content-center align-items-center">
+                <h6 className="font-weight-bold mb-0" style={{ margin: 10 }}>{user.username}</h6>
+                <button className="btn btn-primary ml-2">My Profile</button>
             </div>
-            <div>
-                <span style={{ fontWeight: 'bold', fontSize: 42 }}>Drivezy Rent A Car</span>
+            <div className="text-center">
+                <span className={`badge ${isOnline ? 'bg-success' : 'bg-secondary'} mt-2`}>
+                    Status: {isOnline ? "Online" : "Offline"}
+                </span>
             </div>
-            <div>
-                <span style={{ borderRadius: 20, margin: 20 }}>{isOnline ? "Online" : "Offline"}</span>
-            </div>
-            <div>
+            {/* <div className="text-center">
                 <span>Items on Cart: ({user.cart?.length || 0})</span>
-                <button onClick={() => handlerMenuOption(1)}>My Cart</button>
-            </div>
+                <button className="btn btn-secondary mt-2" onClick={() => handlerMenuOption(1)}>My Cart</button>
+            </div> */}
         </div>
     )
 }

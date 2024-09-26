@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import VehiclesListComponent from '../Components/Vehicles/ListVehicles/VehiclesListComponent'
-import CartComponent from "../Components/Cart/CartComponent"
+// import CartComponent from "../Components/Cart/CartComponent"
 import MenuComponent from '../Components/Menu/MenuComponent'
+
 
 const HomePage = () => {
 
@@ -12,14 +13,14 @@ const HomePage = () => {
         switch (menuReducer.menuOption) {
             case 0:
                 return <VehiclesListComponent />
-            case 1:
-                return <CartComponent />
+            // case 1:
+            //     return <CartComponent />
         }
     }
     useEffect(() => { }, [menuReducer])
 
     return (
-        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 50 }}>
+        <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
             <MenuComponent />
             <div>
                 {

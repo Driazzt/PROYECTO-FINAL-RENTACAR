@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
 import userReducer from "../../../Components/User/UserReducer";
 import menuReducer from "../../../Components/Menu/MenuReducer";
-import vehiclesReducer from "../../../Components/Vehicles/VehiclesReducer";
+import vehiclesReducer from "../../../Components/Vehicles/ListVehicles/VehiclesReducer";
 
 const reducer = combineReducers({
   userReducer,

@@ -11,7 +11,7 @@ const MyVehicleListComponent = () => {
     } = useSelector((state) => state.userReducer.user)
 
     const matchProducts = async () => {
-        const listVehicles = vehicles.filter(v => cart.find(c => c.vehiclesId == v.id))
+        const listVehicles = vehicles.filter(v => cart.find(c => c.vehiclesId == v._id))
         setMyVehiclesList(listVehicles)
     }
 

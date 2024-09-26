@@ -1,12 +1,12 @@
-import { LOAD_VEHICLES } from "./VehiclesActions";
+import { MODIFY_VEHICLES_ACTION } from "./VehiclesInfoActions";
 
 const initialState = {
   products: undefined,
 };
 
-const vehiclesReducer = (state = initialState, action) => {
+const modifyReducer = (state = initialState, action) => {
   switch (action.type) {
-    case LOAD_VEHICLES:
+    case MODIFY_VEHICLES_ACTION:
       return {
         ...state,
         vehicles: action.payload.vehicles,
@@ -16,4 +16,4 @@ const vehiclesReducer = (state = initialState, action) => {
   }
 };
 
-export default vehiclesReducer;
+export default modifyReducer;
