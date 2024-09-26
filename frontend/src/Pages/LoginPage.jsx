@@ -65,7 +65,7 @@ const LoginPage = () => {
                                     <button onClick={doLogin}>Log in</button>
                                 </div>
                                 <div>
-                                    <button onClick={() => setFlagLogin(false)}>Register</button>
+                                    <button onClick={() => setFlagLogin(false)}>Sign Up</button>
                                 </div>
                             </div>
                         )

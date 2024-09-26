@@ -11,12 +11,17 @@ const {
   getUserById,
   updateUser,
   deleteUser,
+  addVehiclesController,
+  addVehiclesToUserInfo,
 } = require("../Controllers/userController");
 
 //! Rutas:
 
 router.get("/getAllUsers", verifyToken, verifyAdmin, getAllUsers);
 router.post("/", verifyToken, verifyAdmin, addUser);
+router.post("/addVehiclesToUser", addVehiclesToUserInfo);
+router.post("/addVehicles", addVehiclesController);
+
 router.get("/:_id", verifyToken, getUserById);
 router.patch("/:idUser", verifyToken, verifyAdmin, updateUser);
 router.delete("/:idUser", verifyToken, verifyAdmin, deleteUser);

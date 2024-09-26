@@ -96,4 +96,47 @@ const getUserById = async (req, res) => {
   }
 };
 
-module.exports = { getAllUsers, updateUser, deleteUser, getUserById, addUser };
+const addVehiclesController = async (req, res) => {
+  try {
+    const _id = req.body._id;
+    const vehiclesId = req.body.vehiclesId;
+
+    const resUserInfo = await (_id, vehiclesId);
+
+    res.status(200).json({ status: "Success", user: resUserInfo });
+  } catch (error) {
+    res.status(404).json({ status: "Failed", error: error.message });
+  }
+};
+
+const addVehiclesToUserInfo = async (req, res) => {
+  const userAux = user.find((u) => u._id == userId);
+  if (userAux.cart) {
+    userAux.cart.push({
+      vehiclesId,
+    });
+  } else {
+    userAux.cart = [
+      {
+        vehiclesId,
+      },
+    ];
+  }
+
+  const userListAux = user.filter((u) => u._id != userId);
+  userListAux.push({
+    ...userAux,
+  });
+  user = userListAux;
+  return userAux;
+};
+
+module.exports = {
+  getAllUsers,
+  updateUser,
+  deleteUser,
+  getUserById,
+  addUser,
+  addVehiclesController,
+  addVehiclesToUserInfo,
+};
