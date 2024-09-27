@@ -9,7 +9,7 @@ const HomePage = () => {
 
     return (
         <div>
-            <img src={logoDrivezzy1} />
+            {/* <img src={logoDrivezzy1} /> */}
             <VehiclesListComponent />
         </div>
     )

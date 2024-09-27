@@ -160,12 +160,12 @@ const CreateVehiclesComponent = () => {
             </div>
 
             <div className="d-flex justify-content-center mt-4 mb-4">
-                <button className="btn btn-success me-3" onClick={createHandler}>Create</button>
+                <button className="btn btn-success ms-2" onClick={createHandler}>Create</button>
             </div>
 
             <div className="d-flex justify-content-center">
-                <button className="btn btn-primary me-2" onClick={vehicleListPage}>Vehicle List</button>
-                <button className="btn btn-secondary ms-2" onClick={goHomePage}>Home</button>
+                <button className="btn btn-secondary-home me-2" onClick={vehicleListPage}>Vehicle List</button>
+                <button className="btn btn-secondary-home ms-2" onClick={goHomePage}>Home</button>
             </div>
         </div>
     );

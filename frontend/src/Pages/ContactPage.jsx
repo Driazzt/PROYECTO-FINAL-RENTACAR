@@ -57,17 +57,17 @@ const ContactPage = () => {
                 <div>
                     <ul className="list-unstyled">
                         <li>
-                            <a href="https://instagram.com/Drivezzy" className="text-primary" target="_blank" rel="noopener noreferrer">
+                            <a href="https://instagram.com/Drivezzy" className="text-primary" target="_blank">
                                 <InstagramIcon /> @Drivezzy
                             </a>
                         </li>
                         <li>
-                            <a href="https://facebook.com/Drivezzy" className="text-primary" target="_blank" rel="noopener noreferrer">
+                            <a href="https://facebook.com/Drivezzy" className="text-primary" target="_blank">
                                 <FacebookIcon /> Drivezzy Rent A Car
                             </a>
                         </li>
                         <li>
-                            <a href="https://twitter.com/DrivezzyCarRentals" className="text-primary" target="_blank" rel="noopener noreferrer">
+                            <a href="https://twitter.com/DrivezzyCarRentals" className="text-primary" target="_blank">
                                 <TwitterIcon /> @DrivezzyCarRentals
                             </a>
                         </li>
@@ -76,8 +76,8 @@ const ContactPage = () => {
             </div>
 
             <div className="d-flex justify-content-center mb-4">
-                <button className="btn btn-secondary me-2" onClick={goVehicleList}>Vehicle List</button>
-                <button className="btn btn-secondary" onClick={goHomePage}>Home</button>
+                <button className="btn btn-secondary-home me-2" onClick={goVehicleList}>Vehicle List</button>
+                <button className="btn btn-secondary-home" onClick={goHomePage}>Home</button>
             </div>
         </div>
 

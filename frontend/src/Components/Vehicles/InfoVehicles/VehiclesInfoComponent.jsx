@@ -3,12 +3,16 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { loadVehicleId } from '../ListVehicles/VehiclesActions'
 import { deleteVehicle, getVehicleById, modifyVehicles } from '../../../Core/Services/vehiclesFetch'
+import IconManual from '../../Icons/IconManual/iconManual'
+import GasIcon from '../../Icons/IconManual/GasIcon'
+import SeatsIcon from '../../Icons/IconManual/SeatsIcon'
+import DoorIcon from '../../Icons/IconManual/DoorIcon'
 
 const VehiclesInfoComponent = () => {
 
     const dispatch = useDispatch()
     const vehicle = useSelector((state) => state.vehiclesReducer.vehicle)
-
+    const user = useSelector((state) => state.userReducer.user)
     const navigate = useNavigate()
     const { state } = useLocation()
     const { vehicleId } = state
@@ -17,6 +21,9 @@ const VehiclesInfoComponent = () => {
     const [newVehicleModify, setNewVehicleModify] = useState(undefined)
     const [isEdit, setIsEdit] = useState(undefined)
 
+
+    const userRole = user.role
+    console.log("userRole", userRole)
 
     const saveHandler = () => {
         modifyVehicles(vehicleId, newVehicleModify)
@@ -204,19 +211,19 @@ const VehiclesInfoComponent = () => {
                                                             />
                                                         </div>
 
-                                                        <button type="submit" className="btn btn-primary">Save Changes</button>
+                                                        <button type="submit" className="btn btn-success">Save Changes</button>
                                                     </form>
                                                 ) : (
                                                     <div>
-                                                        <h6 className="text-primary  ">{vehicle.brand} {vehicle.model} </h6>
+                                                        <h6 className="text-alert">{vehicle.brand} {vehicle.model}</h6>
                                                         <img src={vehicle.image} alt={vehicle.model} className="img-fluid mb-2" />
-                                                        <h6 className="text-alert">{vehicle.engine_type}</h6>
-                                                        <h6 className="text-alert">{vehicle.transmission}</h6>
-                                                        <h6 className="text-alert">{vehicle.seats} seats</h6>
-                                                        <h6 className="text-alert">{vehicle.doors} doors</h6>
+                                                        <h6 className="text-alert"><GasIcon />  {vehicle.engine_type}</h6>
+                                                        <h6 className="text-alert"><IconManual /> {vehicle.transmission}</h6>
+                                                        <h6 className="text-alert"><SeatsIcon />{vehicle.seats} <DoorIcon />{vehicle.doors}</h6>
+                                                        {/* <h6 className="text-alert">{vehicle.doors} doors</h6> */}
                                                         <h6 className="text-alert">{vehicle.vehicle_type}</h6>
                                                         <h6 className="text-alert">{vehicle.registration_year}</h6>
-                                                        <h6 className="text-success  ">{vehicle.price_per_day}€/day</h6>
+                                                        <h6 className="text-danger">{vehicle.price_per_day}€ / day</h6>
                                                     </div>
                                                 )}
                                             </div>
@@ -225,7 +232,11 @@ const VehiclesInfoComponent = () => {
                                 </div>
 
                                 <div className="mb-4">
-                                    <button className="btn btn-primary" onClick={() => setIsEdit(true)}>EDIT VEHICLE</button>
+                                    {userRole === 'admin' && (
+                                        <div>
+                                            <button onClick={() => setIsEdit(true)} className="btn btn-secondary-home">Edit Vehicle</button>
+                                        </div>
+                                    )}
                                 </div>
 
                                 {isEdit && (
@@ -236,12 +247,16 @@ const VehiclesInfoComponent = () => {
                                 )}
 
                                 <div className="mb-4">
-                                    <button className="btn btn-danger" onClick={() => deleteHandler(vehicle._id)}>DELETE</button>
+                                    {userRole === 'admin' && (
+                                        <div>
+                                            <button onClick={() => deleteHandler(vehicle._id)} className="btn btn-danger">Delete Vehicle</button>
+                                        </div>
+                                    )}
                                 </div>
 
                                 <div className="d-flex justify-content-center gap-3">
-                                    <button className="btn btn-secondary" onClick={vehicleListPage}>Vehicle List</button>
-                                    <button className="btn btn-secondary" onClick={goHomePage}>Back Home</button>
+                                    <button className="btn btn-secondary-home" onClick={vehicleListPage}>Vehicle List</button>
+                                    <button className="btn btn-secondary-home" onClick={goHomePage}>Back Home</button>
                                 </div>
                             </div>
                         )

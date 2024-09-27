@@ -1,0 +1,173 @@
+/* globales*/
+.container-fluid {
+  font-family: "Arial", sans-serif;
+}
+
+button {
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  border: none;
+  font-family: "Poppins";
+}
+/* Botones: */
+/* Botón Logout */
+.btn-secondary {
+  background-color: #ff6b6b;
+  color: white;
+  font-family: "Poppins";
+}
+
+.btn-secondary:hover {
+  background-color: #ff4d4d;
+}
+
+/* Botón Create Vehicles */
+.btn-success {
+  background-color: #28a745;
+  color: white;
+  font-family: "Poppins";
+}
+
+.btn-success:hover {
+  background-color: #218838;
+}
+
+/* Botón Contact Us */
+.btn-primary {
+  background-color: #ff9100;
+  color: white;
+  font-family: "Poppins";
+}
+
+.btn-primary:hover {
+  background-color: #ff660de1;
+}
+
+.btn-terciarie {
+  background-color: #fa8a02;
+  font-family: "Poppins";
+  font-size: bold;
+  color: white;
+}
+
+.btn-terciarie:hover {
+  background-color: #ff660de1;
+}
+
+.btn-danger {
+  font-family: "Poppins";
+}
+
+/* Estilo de tarjetas */
+.card {
+  background-color: steelblue;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  font-family: "Poppins";
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card-header {
+  background-color: steelblue;
+}
+
+.card-title {
+  color: #333;
+  font-size: 1.2rem;
+  font-weight: bold;
+  font-family: "Poppins";
+}
+
+.text-warning {
+  color: #ffa502;
+  font-family: "Poppins";
+}
+.text-alert {
+  font-size: 1rem;
+  font-weight: bold;
+  font-family: "Poppins";
+}
+.text-danger {
+  font-size: 1rem;
+  font-weight: bold;
+  font-family: "Poppins";
+}
+
+/* Imagen de los vehículos */
+.img-fluid {
+  border-radius: 10px;
+  transition: 1s ease;
+}
+
+.img-fluid:hover {
+  transform: scale(1.5);
+  transition: 1.5s;
+}
+
+/* Botón Home */
+.btn-secondary-home {
+  background-color: #333;
+  color: white;
+  font-family: "Poppins";
+}
+
+.btn-secondary-home:hover {
+  background-color: #555;
+}
+
+.mb-0 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-family: "Poppins";
+  color: black;
+  background-color: steelblue;
+}
+.mt-4 {
+  font-family: "Poppins";
+}
+
+.list-unstyled a {
+  font-family: "Poppins";
+  color: #ffa502 !important;
+  text-decoration: none;
+}
+
+a {
+  font-family: "Poppins";
+  color: #ffa502 !important;
+}
+
+h1 {
+  font-family: "Poppins";
+  font-weight: bold;
+}
+
+h2 {
+  font-family: "Poppins";
+  font-weight: bold;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .card {
+    padding: 10px;
+  }
+
+  .card-title {
+    font-size: 1rem;
+  }
+}
