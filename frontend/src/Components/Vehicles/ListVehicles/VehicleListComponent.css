@@ -13,7 +13,7 @@ button {
   font-family: "Poppins";
 }
 /* Botones: */
-/* Botón Logout */
+
 .btn-secondary {
   background-color: #ff6b6b;
   color: white;
@@ -24,7 +24,6 @@ button {
   background-color: #ff4d4d;
 }
 
-/* Botón Create Vehicles */
 .btn-success {
   background-color: #28a745;
   color: white;
@@ -35,7 +34,6 @@ button {
   background-color: #218838;
 }
 
-/* Botón Contact Us */
 .btn-primary {
   background-color: #ff9100;
   color: white;
@@ -101,7 +99,12 @@ button {
   font-family: "Poppins";
 }
 
-/* Imagen de los vehículos */
+.text-terciarie {
+  color: orange;
+  /* font-weight: bold; */
+  font-family: "Poppins";
+}
+
 .img-fluid {
   border-radius: 10px;
   transition: 1s ease;
@@ -112,7 +115,6 @@ button {
   transition: 1.5s;
 }
 
-/* Botón Home */
 .btn-secondary-home {
   background-color: #333;
   color: white;

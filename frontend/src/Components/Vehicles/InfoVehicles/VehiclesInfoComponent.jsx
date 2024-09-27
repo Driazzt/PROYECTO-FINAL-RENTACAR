@@ -223,7 +223,7 @@ const VehiclesInfoComponent = () => {
                                                         {/* <h6 className="text-alert">{vehicle.doors} doors</h6> */}
                                                         <h6 className="text-alert">{vehicle.vehicle_type}</h6>
                                                         <h6 className="text-alert">{vehicle.registration_year}</h6>
-                                                        <h6 className="text-danger">{vehicle.price_per_day}€ / day</h6>
+                                                        <h6 className="text-terciarie">{vehicle.price_per_day}€ / day</h6>
                                                     </div>
                                                 )}
                                             </div>
