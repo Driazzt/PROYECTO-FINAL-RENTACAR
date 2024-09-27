@@ -69,12 +69,12 @@ const VehiclesListComponent = () => {
 
                 {userRole === "admin" && (
                     <button onClick={goCreateVehicles} className="btn btn-terciarie">
-                        Create Vehicles
+                        Create
                     </button>
                 )}
 
                 <button className="btn btn-terciarie" onClick={goContact}>
-                    Contact Us!
+                    Contact
                 </button>
             </div>
 

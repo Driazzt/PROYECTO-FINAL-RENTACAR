@@ -216,7 +216,7 @@ const VehiclesInfoComponent = () => {
                                                 ) : (
                                                     <div>
                                                         <h6 className="text-alert">{vehicle.brand} {vehicle.model}</h6>
-                                                        <img src={vehicle.image} alt={vehicle.model} className="img-fluid mb-2" />
+                                                        <img src={vehicle.image} alt={vehicle.model} className="img-fluid-not-zoom mb-2" />
                                                         <h6 className="text-alert"><GasIcon />  {vehicle.engine_type}</h6>
                                                         <h6 className="text-alert"><IconManual /> {vehicle.transmission}</h6>
                                                         <h6 className="text-alert"><SeatsIcon />{vehicle.seats} <DoorIcon />{vehicle.doors}</h6>
