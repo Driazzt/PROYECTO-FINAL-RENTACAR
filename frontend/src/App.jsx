@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import CreateVehiclePage from './Pages/CreateVehiclePage'
 import VehicleListPage from './Pages/VehicleListPage'
 import ContactPage from "./Pages/ContactPage"
+import HomePage from './Pages/HomePage'
 import VehiclesInfoPage from './Pages/VehiclesInfoPage'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
@@ -17,6 +18,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<LoginPage />} />
+          <Route path="/home" element={<HomePage />} />
           <Route path="/create" element={<CreateVehiclePage />} />
           <Route path="/vehicleList" element={<VehicleListPage />} />
           <Route path="/contact" element={<ContactPage />} />

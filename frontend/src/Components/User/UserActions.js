@@ -1,5 +1,6 @@
 export const LOGIN = "LOGIN";
 export const LOAD_INFO = "LOAD_INFO";
+export const LOGOUT = "LOGOUT";
 
 export const doLoginActions = (payload) => {
   return {
@@ -11,5 +12,11 @@ export const loadInfoActions = (payload) => {
   return {
     type: LOAD_INFO,
     payload,
+  };
+};
+
+export const doLogoutAction = () => {
+  return {
+    type: LOGOUT,
   };
 };

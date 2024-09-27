@@ -11,7 +11,7 @@ const ContactPage = () => {
 
     const navigate = useNavigate()
     const goHomePage = () => {
-        navigate("/")
+        navigate("/home")
     }
     const goVehicleList = () => {
         navigate("/vehicleList")

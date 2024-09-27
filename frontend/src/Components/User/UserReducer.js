@@ -1,4 +1,4 @@
-import { LOAD_INFO, LOGIN } from "./UserActions";
+import { LOAD_INFO, LOGIN, LOGOUT } from "./UserActions";
 
 const initialState = {
   user: undefined,
@@ -17,6 +17,11 @@ const userReducer = (state = initialState, action) => {
       return {
         ...state,
         user: action.payload.user,
+      };
+    case LOGOUT:
+      return {
+        ...state,
+        user: null,
       };
     default:
       return state;

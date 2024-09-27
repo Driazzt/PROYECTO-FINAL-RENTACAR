@@ -43,7 +43,7 @@ const VehiclesInfoComponent = () => {
     }
 
     const goHomePage = () => {
-        navigate("/")
+        navigate("/home")
     }
 
     const vehicleListPage = () => {

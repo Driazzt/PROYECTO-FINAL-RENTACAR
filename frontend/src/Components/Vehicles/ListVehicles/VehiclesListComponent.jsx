@@ -4,6 +4,7 @@ import { loadVehicles } from './VehiclesActions'
 import { getVehicles } from '../../../Core/Services/vehiclesFetch'
 import { useNavigate } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import { doLogoutAction } from '../../User/UserActions'
 
 
 
@@ -24,8 +25,15 @@ const VehiclesListComponent = () => {
         navigate("/create")
     }
 
-    const goHomePage = () => {
+    const goLogout = () => {
+        localStorage.removeItem('token');
+
+        dispatch(doLogoutAction())
         navigate("/")
+    }
+
+    const goHomePage = () => {
+        navigate("/home")
     }
 
     const goContact = () => {
@@ -47,7 +55,7 @@ const VehiclesListComponent = () => {
     return (
         <div className="container mt-4">
             <div className="d-flex justify-content-between mb-4">
-                <button className="btn btn-secondary" onClick={goHomePage}>Back Home</button>
+                <button className="btn btn-secondary" onClick={goLogout}>Logout</button>
                 <button className="btn btn-success" onClick={goCreateVehicles}>Create a Vehicle</button>
                 <button className="btn btn-primary" onClick={goContact}>Contact Us!</button>
             </div>

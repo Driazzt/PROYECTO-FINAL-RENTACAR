@@ -18,7 +18,7 @@ const CreateVehiclesComponent = () => {
     }
 
     const goHomePage = () => {
-        navigate('/')
+        navigate('/home')
     }
 
     const vehicleListPage = () => {
