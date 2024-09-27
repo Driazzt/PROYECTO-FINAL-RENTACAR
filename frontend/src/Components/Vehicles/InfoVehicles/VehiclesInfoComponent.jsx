@@ -7,12 +7,16 @@ import IconManual from '../../Icons/IconManual/iconManual'
 import GasIcon from '../../Icons/IconManual/GasIcon'
 import SeatsIcon from '../../Icons/IconManual/SeatsIcon'
 import DoorIcon from '../../Icons/IconManual/DoorIcon'
+import { ErrorMessage, Field, Form, Formik } from 'formik'
+import ErrorComponent from '../../ErrorComponent/ErrorComponent'
+import * as Yup from "yup"
 
 const VehiclesInfoComponent = () => {
 
     const dispatch = useDispatch()
     const vehicle = useSelector((state) => state.vehiclesReducer.vehicle)
     const user = useSelector((state) => state.userReducer.user)
+    const userRole = user.role
     const navigate = useNavigate()
     const { state } = useLocation()
     const { vehicleId } = state
@@ -22,8 +26,32 @@ const VehiclesInfoComponent = () => {
     const [isEdit, setIsEdit] = useState(undefined)
 
 
-    const userRole = user.role
-    console.log("userRole", userRole)
+    const initialValuesForm = {
+        brand: "",
+        model: "",
+        image: "",
+        engine_type: "",
+        transmission: "",
+        seats: 0,
+        doors: 0,
+        vehicle_type: "",
+        registration_year: 0,
+        price_per_day: 0,
+    };
+
+    const vehicleValidationSchema = Yup.object({
+        brand: Yup.string().required("Brand is required"),
+        model: Yup.string().required("Model is required"),
+        image: Yup.string().url("Invalid URL").required("Image URL is required"),
+        engine_type: Yup.string().required("Engine type is required"),
+        transmission: Yup.string().required("Transmission is required"),
+        seats: Yup.number().positive("Seats must be a positive number").integer().required("Seats are required"),
+        doors: Yup.number().positive("Doors must be a positive number").integer().required("Doors are required"),
+        vehicle_type: Yup.string().required("Vehicle type is required"),
+        registration_year: Yup.number().min(2015, "Invalid year"),
+        price_per_day: Yup.number().positive("Price must be positive").required("Price per day is required"),
+    });
+
 
     const saveHandler = () => {
         modifyVehicles(vehicleId, newVehicleModify)

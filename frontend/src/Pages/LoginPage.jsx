@@ -5,6 +5,8 @@ import { doLoginActions } from '../Components/User/UserActions'
 import { doLoginFetch, createUser } from '../Core/Services/userFetch'
 import logoDrivezzy1 from "../assets/logoDrivezzy-nobg1.png"
 import 'bootstrap/dist/css/bootstrap.min.css'
+import ErrorComponent from "../Components/ErrorComponent/ErrorComponent"
+import * as Yup from "yup"
 
 
 const LoginPage = () => {
@@ -44,6 +46,24 @@ const LoginPage = () => {
             user: userInfo
         }))
     }
+
+
+    const initialValuesForm = {
+        name: "",
+        username: "",
+        email: "",
+        password: "",
+        birth_date: 0,
+    }
+
+    const userValidationSchema = Yup.object({
+        name: Yup.string().required("Introduce your name"),
+        username: Yup.string().required("Introduce your username"),
+        email: Yup.string().email().required("Introduce your email"),
+        password: Yup.string().min(6).required("Introduce your password"),
+        birth_date: Yup.number().positive().integer().required().min(18, "You must be +18 to register").max(100, "You must be under 100 years old to register"),
+    })
+
 
     return (
         <div className='container-fluid d-flex flex-column align-items-center justify-content-center min-vh-100'>
