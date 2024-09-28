@@ -164,24 +164,29 @@ const VehiclesInfoComponent = () => {
 
                                                         <div className="mb-3">
                                                             <label className="form-label">Engine Type</label>
-                                                            <input
-                                                                type="text"
+                                                            <select
                                                                 name="engine_type"
                                                                 className="form-control"
-                                                                placeholder="Fill with an engine type..."
                                                                 onChange={(e) => vehicleModifyHandler(e.target.name, e.target.value)}
-                                                            />
+                                                            >
+                                                                <option value="">Select engine type...</option>
+                                                                <option value="Gasoline">Gasoline</option>
+                                                                <option value="Diesel">Diesel</option>
+                                                                <option value="Hybrid">Hybrid</option>
+                                                            </select>
                                                         </div>
 
                                                         <div className="mb-3">
                                                             <label className="form-label">Transmission</label>
-                                                            <input
-                                                                type="text"
+                                                            <select
                                                                 name="transmission"
                                                                 className="form-control"
-                                                                placeholder="Fill with a transmission..."
                                                                 onChange={(e) => vehicleModifyHandler(e.target.name, e.target.value)}
-                                                            />
+                                                            >
+                                                                <option value="">Select transmission...</option>
+                                                                <option value="Manual">Manual</option>
+                                                                <option value="Automatic">Automatic</option>
+                                                            </select>
                                                         </div>
 
                                                         <div className="mb-3">
@@ -208,13 +213,18 @@ const VehiclesInfoComponent = () => {
 
                                                         <div className="mb-3">
                                                             <label className="form-label">Vehicle Type</label>
-                                                            <input
-                                                                type="text"
+                                                            <select
                                                                 name="vehicle_type"
                                                                 className="form-control"
-                                                                placeholder="Fill with the vehicle type..."
                                                                 onChange={(e) => vehicleModifyHandler(e.target.name, e.target.value)}
-                                                            />
+                                                            >
+                                                                <option value="">Select vehicle type...</option>
+                                                                <option value="Hatchback">Hatchback</option>
+                                                                <option value="SUV">SUV</option>
+                                                                <option value="Sedan">Sedan</option>
+                                                                <option value="Cabrio">Cabrio</option>
+                                                                <option value="Van">Van</option>
+                                                            </select>
                                                         </div>
 
                                                         <div className="mb-3">
@@ -291,7 +301,7 @@ const VehiclesInfoComponent = () => {
                     }
                 </div>
             </div>
-        </div>
+        </div >
     );
 }
 
