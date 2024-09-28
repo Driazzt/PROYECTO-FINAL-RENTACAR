@@ -27,6 +27,8 @@ const VehiclesListComponent = () => {
     }
 
     const userRole = user.role
+    const userId = user._id
+    console.log("userId", userId)
     console.log("userRole", userRole)
 
     const goCreateVehicles = () => {
@@ -50,6 +52,10 @@ const VehiclesListComponent = () => {
 
     const goProfile = () => {
         navigate("/myProfile")
+    }
+
+    const goCreateUser = () => {
+        navigate("/createUser")
     }
 
     const goAllUsers = () => {
@@ -84,6 +90,10 @@ const VehiclesListComponent = () => {
                 <button className="btn btn-terciarie" onClick={goProfile}>
                     My Profile
                 </button>
+                {userRole === "admin" && (
+                    <button className="btn btn-terciarie" onClick={goCreateUser}>Create User</button>
+                )}
+
                 {userRole === "admin" && (
                     <button onClick={goAllUsers} className="btn btn-terciarie">
                         Get Users

@@ -10,6 +10,7 @@ import VehiclesInfoPage from './Pages/VehiclesInfoPage'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import MyProfileComponent from './Components/User/MyProfileComponent'
 import UserComponent from './Components/User/UserComponent'
+import CreateUserComponent from './Components/User/CreateUserComponent'
 
 
 function App() {
@@ -25,6 +26,8 @@ function App() {
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/vehicleInfo" element={<VehiclesInfoPage />} />
           <Route path="/myProfile" element={<MyProfileComponent />} />
+          <Route path="/createUser" element={<CreateUserComponent />} />
+          <Route path="/myProfile/:userId" element={<MyProfileComponent />} />
           <Route path="/getAllUsers" element={<UserComponent />} />
         </Routes>
       </BrowserRouter>

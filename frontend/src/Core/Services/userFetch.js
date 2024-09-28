@@ -41,8 +41,6 @@ export const doLoginFetch = async (email, password) => {
   }
 
   return data.user;
-  // const result = await res.json();
-  // return result.user;
 };
 
 //! getuserId fetch
@@ -88,31 +86,66 @@ export const getAllUsers = async (user) => {
   return result.user;
 };
 
-// export const getUser = async (userId) => {
-//   const res = await fetch(`http://localhost:8000/user/${userId}`);
-//   const result = await res.json();
-//   return result.user;
-// };
+//! updateUser Fetch
 
-//! fetch addvehiclestocart
+export const modifyProfile = async (userId, newProfileModify) => {
+  const authToken = localStorage.getItem("token");
+  if (!authToken) {
+    console.error("No token found in localStorage");
+    return null;
+  }
+  const res = await fetch(`http://localhost:8000/user/${userId}`, {
+    method: "PATCH",
+    headers: {
+      "content-type": "Application/json",
+      "auth-token": authToken,
+    },
+    body: JSON.stringify({
+      ...newProfileModify,
+    }),
+  });
+  const result = await res.json();
+  return result.user;
+};
 
-// export const addVehiclesToCart = async (userId, vehiclesId) => {
-//   const res = await fetch(
-//     `http://localhost:8000/user/${userId}/addVehiclesToUser`,
-//     {
-//       method: "POST",
-//       headers: {
-//         "content-type": "Application/json",
-//       },
-//       body: JSON.stringify({
-//         userId,
-//         vehiclesId,
-//       }),
-//     }
-//   );
-//   if (!res.ok) {
-//     throw new Error("Error adding vehicle to cart");
-//   }
-//   const result = await res.json();
-//   return result;
-// };
+//! deleteUser Fetch
+
+export const deleteUser = async (userId) => {
+  const authToken = localStorage.getItem("token");
+  if (!authToken) {
+    console.error("No token found in localStorage");
+    return null;
+  }
+  const res = await fetch(`http://localhost:8000/user/${userId}`, {
+    method: "DELETE",
+    headers: {
+      "content-type": "Application/json",
+      "auth-token": authToken,
+    },
+  });
+  const result = await res.json();
+  return result.user;
+};
+
+//! fetch createUser
+
+export const createUserFetch = async (newUser) => {
+  const authToken = localStorage.getItem("token");
+  if (!authToken) {
+    console.error("No token found in localStorage");
+    return null;
+  }
+
+  const res = await fetch("http://localhost:8000/user/", {
+    method: "POST",
+    headers: {
+      "content-type": "Application/json",
+      "auth-token": authToken,
+    },
+    body: JSON.stringify({
+      ...newUser,
+    }),
+  });
+  const result = await res.json();
+  return result.user;
+};

@@ -2,7 +2,7 @@ import { LOAD_INFO, LOGIN, LOGOUT } from "./UserActions";
 
 const initialState = {
   user: undefined,
-  users: [0],
+  users: [],
   isOnline: false,
 };
 
@@ -25,11 +25,6 @@ const userReducer = (state = initialState, action) => {
         ...state,
         user: null,
       };
-    // case LOAD_USERS:
-    //   return {
-    //     ...state,
-    //     users: action.payload.user,
-    //   };
     default:
       return state;
   }

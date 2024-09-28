@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllUsers } from '../../Core/Services/userFetch';
+import { getAllUsers, getUser } from '../../Core/Services/userFetch';
 import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { doLogoutAction, loadInfoActions } from '../User/UserActions';
@@ -20,7 +20,7 @@ const UserComponent = () => {
         );
     };
 
-    const vehicleListPage = () => {
+    const goVehicleList = () => {
         navigate("/vehicleList")
     }
 
@@ -30,9 +30,15 @@ const UserComponent = () => {
         navigate("/");
     };
 
-    const goProfile = () => {
-        navigate("/myProfile")
-    }
+    const goProfile = async (userId) => {
+        const getUserIdCard = await getUser(userId);
+        dispatch(
+            loadInfoActions({
+                user: getUserIdCard,
+            })
+        );
+        navigate(`/myProfile/${userId}`);
+    };
 
     const goHomePage = () => {
         navigate("/home");
@@ -44,6 +50,17 @@ const UserComponent = () => {
 
     return (
         <div className="mb-4">
+            <div className="d-flex justify-content-between align-items-center mb-4">
+                {/* <button className="btn btn-terciarie" onClick={goHomePage}>
+                    Home
+                </button>
+                <button className="btn btn-terciarie" onClick={goVehicleList}>
+                    Vehicle List
+                </button> */}
+                <button className="btn btn-terciarie" onClick={goLogout}>
+                    Logout
+                </button>
+            </div>
             {!users ? (
                 <div className="text-center">Loading...</div>
             ) : (
@@ -51,7 +68,7 @@ const UserComponent = () => {
                     {users.map((u, idx) => (
                         <div className="col-12 col-sm-6 col-md-4 col-lg-3" key={idx}>
                             <div className="card h-100">
-                                <div className="card-body text-center d-flex flex-column align-items-center" onClick={goProfile}>
+                                <div className="card-body text-center d-flex flex-column align-items-center" style={{ cursor: "pointer" }} onClick={() => goProfile(u._id)}>
                                     <h5 className="card-title">{u.name} {u.username}</h5>
                                     <p className="text-warning">{u.email}</p>
                                     <p className="text-warning">{u.birth_date}</p>
@@ -63,6 +80,7 @@ const UserComponent = () => {
                     <button className="btn btn-terciarie" onClick={goLogout}>
                         Logout
                     </button>
+
                 </div>
 
             )}
