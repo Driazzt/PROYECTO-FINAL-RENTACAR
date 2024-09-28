@@ -68,6 +68,26 @@ export const getUser = async (userId) => {
   return result.user;
 };
 
+//! getusers fetch
+
+export const getAllUsers = async (user) => {
+  const authToken = localStorage.getItem("token");
+  if (!authToken) {
+    console.error("No token found in localStorage");
+    return null;
+  }
+  const res = await fetch("http://localhost:8000/user/getAllUsers", {
+    method: "GET",
+    headers: {
+      "Content-Type": "Application/json",
+      "auth-token": authToken,
+    },
+  });
+  const result = await res.json();
+
+  return result.user;
+};
+
 // export const getUser = async (userId) => {
 //   const res = await fetch(`http://localhost:8000/user/${userId}`);
 //   const result = await res.json();

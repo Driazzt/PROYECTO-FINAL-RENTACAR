@@ -48,6 +48,14 @@ const VehiclesListComponent = () => {
         navigate("/contact")
     }
 
+    const goProfile = () => {
+        navigate("/myProfile")
+    }
+
+    const goAllUsers = () => {
+        navigate("/getAllUsers")
+    }
+
     const goVehicleInfo = (vehicleId) => {
         navigate("/vehicleInfo", {
             state: {
@@ -63,10 +71,6 @@ const VehiclesListComponent = () => {
     return (
         <div className="container-fluid mt-4">
             <div className="d-flex justify-content-between align-items-center mb-4">
-                <button className="btn btn-terciarie" onClick={goLogout}>
-                    Logout
-                </button>
-
                 {userRole === "admin" && (
                     <button onClick={goCreateVehicles} className="btn btn-terciarie">
                         Create
@@ -76,6 +80,15 @@ const VehiclesListComponent = () => {
                 <button className="btn btn-terciarie" onClick={goContact}>
                     Contact
                 </button>
+
+                <button className="btn btn-terciarie" onClick={goProfile}>
+                    My Profile
+                </button>
+                {userRole === "admin" && (
+                    <button onClick={goAllUsers} className="btn btn-terciarie">
+                        Get Users
+                    </button>
+                )}
             </div>
 
             <div className="mb-4">
@@ -114,7 +127,9 @@ const VehiclesListComponent = () => {
                     </div>
                 )}
             </div>
-
+            <button className="btn btn-terciarie" onClick={goLogout}>
+                Logout
+            </button>
             {/* <div className="d-flex justify-content-center">
                 <button className="btn btn-secondary-home" onClick={goHomePage}>
                     Home

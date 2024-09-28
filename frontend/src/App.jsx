@@ -8,6 +8,8 @@ import VehicleListPage from './Pages/VehicleListPage'
 import ContactPage from "./Pages/ContactPage"
 import VehiclesInfoPage from './Pages/VehiclesInfoPage'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import MyProfileComponent from './Components/User/MyProfileComponent'
+import UserComponent from './Components/User/UserComponent'
 
 
 function App() {
@@ -22,6 +24,8 @@ function App() {
           <Route path="/vehicleList" element={<VehicleListPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/vehicleInfo" element={<VehiclesInfoPage />} />
+          <Route path="/myProfile" element={<MyProfileComponent />} />
+          <Route path="/getAllUsers" element={<UserComponent />} />
         </Routes>
       </BrowserRouter>
     </Provider >
