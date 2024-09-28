@@ -249,7 +249,7 @@ const VehiclesInfoComponent = () => {
                                                             />
                                                         </div>
 
-                                                        <button type="submit" className="btn btn-success">Save Changes</button>
+                                                        <button type="submit" className="btn btn-success" onClick={saveHandler}>Save Changes</button>
                                                     </form>
                                                 ) : (
                                                     <div>
