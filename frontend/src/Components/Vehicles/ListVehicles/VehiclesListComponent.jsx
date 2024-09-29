@@ -81,12 +81,12 @@ const VehiclesListComponent = () => {
             <div className="d-flex justify-content-between align-items-center mb-4">
                 {userRole === "admin" && (
                     <button onClick={goCreateVehicles} className="btn btn-terciarie">
-                        Create
+                        Create Vehicles
                     </button>
                 )}
 
                 <button className="btn btn-terciarie" onClick={goContact}>
-                    Contact
+                    Contact Us!
                 </button>
 
                 <button className="btn btn-terciarie" onClick={goProfile}>

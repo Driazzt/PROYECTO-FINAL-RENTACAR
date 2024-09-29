@@ -97,9 +97,8 @@ const MyProfileComponent = () => {
     return (
         <div className="container-fluid mt-4">
             <img src={logoDrivezzy1} />
-            <div className="d-flex justify-content-between align-items-center mb-4">
-                <button className="btn btn-terciarie" onClick={goHomePage}>Back Home</button>
-                <button className="btn btn-terciarie" onClick={goLogout}>Logout</button>
+            <div className="d-flex justify-content-center align-items-center mb-4">
+                <button className="btn btn-terciarie" onClick={goHomePage}>Home</button>
             </div>
 
             <div className="mb-4">
@@ -177,10 +176,12 @@ const MyProfileComponent = () => {
                                 />
                             )}
                         </div>
-                        <button type="submit" className="btn btn-primary mt-3" onClick={saveHandler}>
-                            Save Changes
-                        </button>
-                        <button className="btn btn-primary mt-3" onClick={cancelHandler}>Cancel</button>
+                        <div className="d-flex justify-content-center align-items-center mb-4">
+                            <button type="submit" className="btn btn-primary mt-3" onClick={saveHandler}>
+                                Save Changes
+                            </button>
+                            <button className="btn btn-primary mt-3" onClick={cancelHandler}>Cancel</button>
+                        </div>
 
                     </form>
                 ) : (
@@ -197,6 +198,9 @@ const MyProfileComponent = () => {
                         </div>
                     </div>
                 )}
+            </div>
+            <div>
+                <button className="btn btn-terciarie" onClick={goLogout}>Logout</button>
             </div>
         </div>
     );
