@@ -6,12 +6,14 @@ import { doLoginFetch, createUser } from '../Core/Services/userFetch'
 import logoDrivezzy1 from "../assets/logoDrivezzy-nobg1.png"
 import 'bootstrap/dist/css/bootstrap.min.css'
 import * as Yup from "yup"
+import { useNavigate } from 'react-router-dom'
 
 
 const LoginPage = () => {
 
     const user = useSelector((state) => state.userReducer.user)
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     const [flagLogin, setFlagLogin] = useState(true)
     const [loginInfo, setLoginInfo] = useState({})
@@ -36,6 +38,7 @@ const LoginPage = () => {
         dispatch(doLoginActions({
             user: userInfo
         }))
+        navigate("/")
     }
 
     const doLogin = async () => {
