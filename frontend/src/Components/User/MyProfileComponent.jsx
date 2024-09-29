@@ -98,10 +98,8 @@ const MyProfileComponent = () => {
         <div className="container-fluid mt-4">
             <img src={logoDrivezzy1} />
             <div className="d-flex justify-content-between align-items-center mb-4">
-                <button className="btn btn-terciarie" onClick={goLogout}>
-                    Logout
-                </button>
-                <button className="btn btn-secondary-home" onClick={goHomePage}>Back Home</button>
+                <button className="btn btn-terciarie" onClick={goHomePage}>Back Home</button>
+                <button className="btn btn-terciarie" onClick={goLogout}>Logout</button>
             </div>
 
             <div className="mb-4">

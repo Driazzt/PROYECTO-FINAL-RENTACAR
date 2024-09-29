@@ -9,7 +9,18 @@ const CreateVehiclesComponent = () => {
 
     const navigate = useNavigate()
 
-    const [newVehicle, setNewVehicle] = useState()
+    const [newVehicle, setNewVehicle] = useState({
+        brand: '',
+        model: '',
+        engine_type: '',
+        transmission: '',
+        seats: 0,
+        doors: 0,
+        vehicle_type: '',
+        registration_year: 2010,
+        price_per_day: 0,
+        image: ''
+    });
     const newVehicleHandler = (fieldName, fieldValue) => {
         setNewVehicle({
             ...newVehicle,
@@ -71,24 +82,31 @@ const CreateVehiclesComponent = () => {
 
                     <div className="mb-3 w-100">
                         <label className="form-label fw-bold">Engine Type</label>
-                        <input
-                            type="text"
+                        <select
                             className="form-control"
                             placeholder="Engine type..."
                             name="engine_type"
                             onChange={(e) => newVehicleHandler(e.target.name, e.target.value)}
-                        />
+                        >
+                            <option value="">Select engine type...</option>
+                            <option value="Gasoline">Gasoline</option>
+                            <option value="Diesel">Diesel</option>
+                            <option value="Hybrid">Hybrid</option>
+                        </select>
                     </div>
 
                     <div className="mb-3 w-100">
                         <label className="form-label fw-bold">Transmission</label>
-                        <input
-                            type="text"
+                        <select
                             className="form-control"
                             placeholder="Transmission..."
                             name="transmission"
                             onChange={(e) => newVehicleHandler(e.target.name, e.target.value)}
-                        />
+                        >
+                            <option value="">Select transmission...</option>
+                            <option value="Manual">Manual</option>
+                            <option value="Automatic">Automatic</option>
+                        </select>
                     </div>
 
                     <div className="mb-3 w-100">
@@ -115,13 +133,19 @@ const CreateVehiclesComponent = () => {
 
                     <div className="mb-3 w-100">
                         <label className="form-label fw-bold">Vehicle Type</label>
-                        <input
-                            type="text"
+                        <select
                             className="form-control"
                             placeholder="Vehicle type..."
                             name="vehicle_type"
                             onChange={(e) => newVehicleHandler(e.target.name, e.target.value)}
-                        />
+                        >
+                            <option value="">Select vehicle type...</option>
+                            <option value="Hatchback">Hatchback</option>
+                            <option value="SUV">SUV</option>
+                            <option value="Sedan">Sedan</option>
+                            <option value="Cabrio">Cabrio</option>
+                            <option value="Van">Van</option>
+                        </select>
                     </div>
 
                     <div className="mb-3 w-100">
@@ -131,6 +155,7 @@ const CreateVehiclesComponent = () => {
                             className="form-control"
                             placeholder="Registration year..."
                             name="registration_year"
+                            min="2010"
                             onChange={(e) => newVehicleHandler(e.target.name, e.target.value)}
                         />
                     </div>

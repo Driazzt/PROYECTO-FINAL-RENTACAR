@@ -41,6 +41,14 @@ const UserComponent = () => {
         navigate(`/myProfile/${userId}`);
     };
 
+    const myProfile = () => {
+        navigate("/myProfile")
+    }
+
+    const createUserHandler = () => {
+        navigate("/createUser")
+    }
+
     const goHomePage = () => {
         navigate("/home");
     };
@@ -56,11 +64,11 @@ const UserComponent = () => {
                 <button className="btn btn-terciarie" onClick={goHomePage}>
                     Home
                 </button>
-                <button className="btn btn-terciarie" onClick={goVehicleList}>
-                    Vehicle List
+                <button className="btn btn-terciarie" onClick={myProfile}>
+                    My profile
                 </button>
-                <button className="btn btn-terciarie" onClick={goLogout}>
-                    Logout
+                <button className="btn btn-terciarie" onClick={createUserHandler}>
+                    Create User
                 </button>
             </div>
             {!users ? (

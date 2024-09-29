@@ -35,7 +35,7 @@ const CreateUserComponent = () => {
     const createHandler = async () => {
         try {
             const response = await createUserFetch(newUser);
-            navigate('/home');
+            navigate('/getAllUsers');
             if (response) { }
         } catch (error) {
             console.error('Error creating user', error);
