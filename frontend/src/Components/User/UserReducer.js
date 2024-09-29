@@ -4,6 +4,7 @@ const initialState = {
   user: undefined,
   users: [],
   isOnline: false,
+  selectedUser: null,
 };
 
 const userReducer = (state = initialState, action) => {
@@ -16,10 +17,14 @@ const userReducer = (state = initialState, action) => {
       };
     case LOAD_INFO:
       return {
+        // ...state,
+        // user: action.payload.user,
+        // users: action.payload.users || [],
+
         ...state,
-        user: action.payload.user,
-        users: action.payload.users || [],
+        ...action.payload,
       };
+
     case LOGOUT:
       return {
         ...state,

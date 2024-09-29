@@ -1,21 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { deleteUser, getUser, modifyProfile } from '../../Core/Services/userFetch';
-import { doLogoutAction } from '../User/UserActions';
+import { useNavigate, useParams } from 'react-router-dom';
+import { deleteUser, getAllUsers, getUser, modifyProfile } from '../../Core/Services/userFetch';
+import { doLogoutAction, loadInfoActions } from '../User/UserActions';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const MyProfileComponent = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const user = useSelector((state) => state.userReducer.user);
+    const { userId } = useParams()
 
     const [profile, setProfile] = useState(null);
     const [editedProfile, setEditedProfile] = useState({});
     const [isEdit, setIsEdit] = useState(false);
 
     const loadUserProfile = async () => {
-        const userProfile = await getUser(user._id);
+        const idToFetch = userId || user._id;
+        const userProfile = await getUser(idToFetch);
         setProfile(userProfile);
         setEditedProfile(userProfile);
     };
@@ -42,20 +44,11 @@ const MyProfileComponent = () => {
         setIsEdit(true);
     };
 
-    const saveHandler = () => {
-        modifyProfile(user._id, editedProfile)
-        setIsEdit(false)
-        setProfile(editedProfile)
-        setEditedProfile(editedProfile)
-        navigate("/myProfile")
-
-        dispatch(
-            loadUserProfile({
-                userId: user._id,
-                user: editedProfile
-            })
-        )
-    }
+    const saveHandler = async () => {
+        await modifyProfile(profile._id, editedProfile);
+        setIsEdit(false);
+        setProfile(editedProfile);
+    };
 
     const cancelHandler = () => {
         setIsEdit(false)
@@ -76,20 +69,27 @@ const MyProfileComponent = () => {
         loadUserProfile();
     };
 
+    const loadUserList = async () => {
+        const usersAux = await getAllUsers();
+        dispatch(
+            loadInfoActions({
+                users: usersAux
+            })
+        );
+    };
 
     useEffect(() => {
         if (user) {
             loadUserProfile();
         }
+        loadUserList()
     }, [user]);
+
 
     const deleteHandler = (profile) => {
         deleteUser(profile)
         loadUserProfile
-        navigate("/vehicleList")
-        localStorage.removeItem('token');
-        dispatch(doLogoutAction());
-        navigate("/");
+        navigate("/getAllUsers")
     }
 
     return (
@@ -156,7 +156,7 @@ const MyProfileComponent = () => {
                                 onChange={handleInputChange}
                             />
                         </div>
-                        {/* <div className="form-group">
+                        <div className="form-group">
                             <label>Role:</label>
                             {user.role === 'admin' ? (
                                 <input
@@ -175,7 +175,7 @@ const MyProfileComponent = () => {
                                     readOnly
                                 />
                             )}
-                        </div> */}
+                        </div>
                         <button type="submit" className="btn btn-primary mt-3" onClick={saveHandler}>
                             Save Changes
                         </button>

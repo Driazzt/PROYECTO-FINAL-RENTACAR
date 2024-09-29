@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllUsers, getUser } from '../../Core/Services/userFetch';
+import { getAllUsers, getUser, modifyProfile } from '../../Core/Services/userFetch';
 import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { doLogoutAction, loadInfoActions } from '../User/UserActions';
@@ -31,10 +31,10 @@ const UserComponent = () => {
     };
 
     const goProfile = async (userId) => {
-        const getUserIdCard = await getUser(userId);
+        const selectedUser = await getUser(userId);
         dispatch(
             loadInfoActions({
-                user: getUserIdCard,
+                selectedUser: selectedUser,
             })
         );
         navigate(`/myProfile/${userId}`);
@@ -51,12 +51,12 @@ const UserComponent = () => {
     return (
         <div className="mb-4">
             <div className="d-flex justify-content-between align-items-center mb-4">
-                {/* <button className="btn btn-terciarie" onClick={goHomePage}>
+                <button className="btn btn-terciarie" onClick={goHomePage}>
                     Home
                 </button>
                 <button className="btn btn-terciarie" onClick={goVehicleList}>
                     Vehicle List
-                </button> */}
+                </button>
                 <button className="btn btn-terciarie" onClick={goLogout}>
                     Logout
                 </button>

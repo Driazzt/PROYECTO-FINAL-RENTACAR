@@ -6,6 +6,8 @@ import { useNavigate } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { doLogoutAction } from '../../User/UserActions'
 import './VehicleListComponent.css'
+import SeatsIcon from '../../Icons/IconManual/SeatsIcon'
+import DoorIcon from '../../Icons/IconManual/DoorIcon'
 
 
 
@@ -116,13 +118,6 @@ const VehiclesListComponent = () => {
                                 <div className="card h-100">
                                     <div className="card-body text-center d-flex flex-column align-items-center">
                                         <h5 className="card-title">{v.brand} {v.model}</h5>
-                                        {/* <p className="text-warning mb-1">{v.engine_type}</p>
-                                        <p className="text-warning mb-1">{v.transmission}</p>
-                                        <p className="text-warning mb-1">{v.seats} seats</p>
-                                        <p className="text-warning mb-1">{v.doors} doors</p>
-                                        <p className="text-warning mb-1">{v.vehicle_type}</p>
-                                        <p className="text-warning">{v.registration_year}</p> */}
-                                        <p className="text-warning">{v.price_per_day} €/day</p>
 
                                         <img
                                             className="img-fluid mt-3"
@@ -130,6 +125,9 @@ const VehiclesListComponent = () => {
                                             alt={`${v.brand} ${v.model}`}
                                             onClick={() => goVehicleInfo(v._id)}
                                         />
+                                        <br />
+                                        <p> <SeatsIcon />{v.seats} <DoorIcon />{v.doors}</p>
+                                        <p className="text-warning">{v.price_per_day} €/day</p>
                                     </div>
                                 </div>
                             </div>
@@ -140,11 +138,6 @@ const VehiclesListComponent = () => {
             <button className="btn btn-terciarie" onClick={goLogout}>
                 Logout
             </button>
-            {/* <div className="d-flex justify-content-center">
-                <button className="btn btn-secondary-home" onClick={goHomePage}>
-                    Home
-                </button>
-            </div> */}
         </div>
     );
 }

@@ -7,8 +7,6 @@ import IconManual from '../../Icons/IconManual/iconManual'
 import GasIcon from '../../Icons/IconManual/GasIcon'
 import SeatsIcon from '../../Icons/IconManual/SeatsIcon'
 import DoorIcon from '../../Icons/IconManual/DoorIcon'
-import { ErrorMessage, Field, Form, Formik } from 'formik'
-import ErrorComponent from '../../ErrorComponent/ErrorComponent'
 import * as Yup from "yup"
 
 const VehiclesInfoComponent = () => {
@@ -258,7 +256,6 @@ const VehiclesInfoComponent = () => {
                                                         <h6 className="text-alert"><GasIcon />  {vehicle.engine_type}</h6>
                                                         <h6 className="text-alert"><IconManual /> {vehicle.transmission}</h6>
                                                         <h6 className="text-alert"><SeatsIcon />{vehicle.seats} <DoorIcon />{vehicle.doors}</h6>
-                                                        {/* <h6 className="text-alert">{vehicle.doors} doors</h6> */}
                                                         <h6 className="text-alert">{vehicle.vehicle_type}</h6>
                                                         <h6 className="text-alert">{vehicle.registration_year}</h6>
                                                         <h6 className="text-terciarie">{vehicle.price_per_day}€ / day</h6>

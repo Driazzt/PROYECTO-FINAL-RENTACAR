@@ -5,7 +5,6 @@ import { doLoginActions } from '../Components/User/UserActions'
 import { doLoginFetch, createUser } from '../Core/Services/userFetch'
 import logoDrivezzy1 from "../assets/logoDrivezzy-nobg1.png"
 import 'bootstrap/dist/css/bootstrap.min.css'
-import ErrorComponent from "../Components/ErrorComponent/ErrorComponent"
 import * as Yup from "yup"
 
 
