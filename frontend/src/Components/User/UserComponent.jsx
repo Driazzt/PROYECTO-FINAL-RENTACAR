@@ -4,6 +4,7 @@ import { getAllUsers, getUser, modifyProfile } from '../../Core/Services/userFet
 import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { doLogoutAction, loadInfoActions } from '../User/UserActions';
+import logoDrivezzy1 from "../../assets/logoDrivezzy-nobg1.png"
 
 const UserComponent = () => {
 
@@ -50,6 +51,7 @@ const UserComponent = () => {
 
     return (
         <div className="mb-4">
+            <img src={logoDrivezzy1} />
             <div className="d-flex justify-content-between align-items-center mb-4">
                 <button className="btn btn-terciarie" onClick={goHomePage}>
                     Home

@@ -4,6 +4,8 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { deleteUser, getAllUsers, getUser, modifyProfile } from '../../Core/Services/userFetch';
 import { doLogoutAction, loadInfoActions } from '../User/UserActions';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import logoDrivezzy1 from "../../assets/logoDrivezzy-nobg1.png"
+
 
 const MyProfileComponent = () => {
     const dispatch = useDispatch();
@@ -94,6 +96,7 @@ const MyProfileComponent = () => {
 
     return (
         <div className="container-fluid mt-4">
+            <img src={logoDrivezzy1} />
             <div className="d-flex justify-content-between align-items-center mb-4">
                 <button className="btn btn-terciarie" onClick={goLogout}>
                     Logout

@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { createUserFetch } from '../../Core/Services/userFetch';
+import logoDrivezzy1 from "../../assets/logoDrivezzy-nobg1.png"
+
 
 const CreateUserComponent = () => {
     const navigate = useNavigate();
@@ -42,6 +44,7 @@ const CreateUserComponent = () => {
 
     return (
         <div className="container mt-4">
+            <img src={logoDrivezzy1} />
             <div className="text-center">
                 <h2>Create a new User</h2>
                 <h4 className="mt-2">Fill this form to create a new user:</h4>
