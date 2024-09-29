@@ -172,3 +172,45 @@ h2 {
     font-size: 1rem;
   }
 }
+
+@media (max-width: 500px) {
+  .imgLogo {
+    margin-left: -40px;
+  }
+  #root {
+    width: 90%;
+  }
+
+  button {
+    font-size: 0.9rem;
+    padding: 8px 15px;
+  }
+  .btn {
+    font-size: 0.7rem;
+    padding: 12px 17px;
+    margin-left: -20px;
+  }
+  .col-12 {
+    width: 95%;
+  }
+  .card-body {
+    margin: 0;
+    border-radius: 15px;
+  }
+
+  .card-title {
+    font-size: 0.9rem;
+  }
+
+  .mb-0 {
+    font-size: 1rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  .d-grid {
+    margin-left: 30px;
+  }
+}

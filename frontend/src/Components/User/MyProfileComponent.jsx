@@ -96,7 +96,7 @@ const MyProfileComponent = () => {
 
     return (
         <div className="container-fluid mt-4">
-            <img src={logoDrivezzy1} />
+            <img className="imgLogo" src={logoDrivezzy1} />
             <div className="d-flex justify-content-center align-items-center mb-4">
                 <button className="btn btn-terciarie" onClick={goHomePage}>Home</button>
             </div>

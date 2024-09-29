@@ -6,7 +6,7 @@ import logoDrivezzy1 from "../assets/logoDrivezzy-nobg1.png"
 const VehicleListPage = () => {
     return (
         <div>
-            <img src={logoDrivezzy1} />
+            <img className="imgLogo" src={logoDrivezzy1} />
             <VehiclesListComponent />
         </div>
     )

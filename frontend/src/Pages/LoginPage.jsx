@@ -66,7 +66,7 @@ const LoginPage = () => {
 
     return (
         <div className='container-fluid d-flex flex-column align-items-center justify-content-center min-vh-100'>
-            <img src={logoDrivezzy1} className="img-fluid mb-4" alt="Drivezzy Logo" style={{ maxWidth: "400px" }} />
+            <img src={logoDrivezzy1} className="imgLogo-fluid mb-4" alt="Drivezzy Logo" style={{ maxWidth: "400px" }} />
             {!user ? (
                 flagLogin ? (
                     <div className="card p-4 w-100" style={{ maxWidth: '400px' }}>

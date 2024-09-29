@@ -59,7 +59,7 @@ const UserComponent = () => {
 
     return (
         <div className="mb-4">
-            <img src={logoDrivezzy1} />
+            <img className="imgLogo" src={logoDrivezzy1} />
             <div className="d-flex justify-content-between align-items-center mb-4">
                 <button className="btn btn-terciarie" onClick={goHomePage}>
                     Home
