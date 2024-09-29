@@ -49,7 +49,7 @@ const emailSignupTemplate = `
 <body>
     <div class="email-container">
         <div class="email-header">
-            <h1>Welcome to Drivezy RentACar!</h1>
+            <h1>Welcome to Drivezzy RentACar!</h1>
         </div>
         <div class="email-content">
             <p>Hello {{name}},</p>
